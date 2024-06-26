@@ -1,0 +1,11 @@
+---
+- name: Update web servers
+  hosts: aws_hosts
+  remote_user: ubuntu
+
+  tasks:
+  - name: Copy this file to hosts
+    ansible.builtin.template:
+      src: /etc/semaphore/ansible_copy.txt
+      dest: /var/ansible_copy.txt
+    become: true
