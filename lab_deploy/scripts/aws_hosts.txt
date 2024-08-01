@@ -1,0 +1,8 @@
+[aws_hosts]
+10.100.2.76
+10.100.2.109
+10.100.3.169
+10.100.3.141
+
+[aws_hosts:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
