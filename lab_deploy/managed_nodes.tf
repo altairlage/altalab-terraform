@@ -7,6 +7,8 @@ resource "aws_instance" "az1_instances" {
     
     vpc_security_group_ids  = [aws_security_group.managed_nodes_sg.id]
     subnet_id               = aws_subnet.middleware_subnet_az1.id
+    iam_instance_profile = "${aws_iam_instance_profile.ansible_nodes_instance_profile.name}"
+
     tags = {
         Name = "az1-ansible-lab${count.index}"
     }
@@ -21,6 +23,8 @@ resource "aws_instance" "az2_instances" {
     
     vpc_security_group_ids  = [aws_security_group.managed_nodes_sg.id]
     subnet_id               = aws_subnet.middleware_subnet_az2.id
+    iam_instance_profile = "${aws_iam_instance_profile.ansible_nodes_instance_profile.name}"
+    
     tags = {
         Name = "az2-ansible-lab${count.index}"
     }
