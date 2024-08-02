@@ -6,6 +6,8 @@ resource "aws_instance" "control_node_instance" {
     
     vpc_security_group_ids  = [aws_security_group.control_node_sg.id]
     subnet_id               = aws_subnet.cicd_subnet_az1.id
+
+    iam_instance_profile = "${aws_iam_instance_profile.ansible_nodes_instance_profile.name}"
     
     tags = {
         Name = "ansible-lab-control-node"

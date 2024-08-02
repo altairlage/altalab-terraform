@@ -16,7 +16,7 @@ services:
     image: mysql:8.0
     hostname: mysql
     volumes:
-      - ./semaphore-mysql:/var/lib/mysql
+      - /home/ubuntu/semaphore/semaphore-mysql:/var/lib/mysql
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       MYSQL_DATABASE: semaphore
@@ -28,7 +28,7 @@ services:
       - 3000:3000
     image: semaphoreui/semaphore:latest
     volumes:
-      - ./semaphore-playbook:/tmp/semaphore/playbook
+      - /home/ubuntu/semaphore/semaphore-playbook:/tmp/semaphore/playbook
     environment:
       SEMAPHORE_DB_USER: semaphore
       SEMAPHORE_DB_PASS: Semaphore@passwd1
