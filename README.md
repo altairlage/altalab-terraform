@@ -37,11 +37,11 @@ terraform destroy -var-file=./env/us-west-2.tfvars
 
 # TO-DO
 
-1. Change the CICD subnet to private.
-1. Create ALBs to allow traffic to the services in CICD subnet.
+1. Change the CICD subnet to private - done
+1. Create ALBs to allow traffic to the services in CICD subnet - done
     1. Create access logs on ALBs
 1. Create private hosted zone to access the services in CICD subnet via ELB.
     1. Requires configuration in VPC
     1. Create the A record for each service
     1. Maybe CNAME records too?
-1. Create SSM role to allow ssh connection in all the servers - testing
+1. Create SSM role to allow ssh connection in all the servers - done
