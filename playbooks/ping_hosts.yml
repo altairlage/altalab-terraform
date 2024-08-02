@@ -1,0 +1,7 @@
+---
+- name: Ansible playbook to perform a ping to the hosts
+  hosts: all
+
+  tasks:
+    - name: Example from an Ansible Playbook
+      ansible.builtin.ping:

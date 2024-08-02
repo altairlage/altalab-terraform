@@ -1,0 +1,14 @@
+---
+- name: Runs commands as the root user
+  hosts: all
+
+  tasks:
+    - name: Run a command as the root
+      command: uname -a
+      become: true
+      become_user: root
+      register: cmd_result
+    
+    - name: CMD result
+      debug:
+        msg: "{{ cmd_result.stdout_lines }}"
