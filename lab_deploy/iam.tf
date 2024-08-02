@@ -2,35 +2,46 @@ resource "aws_iam_role" "ansible_nodes_role" {
     name = "ansible-nodes-role"
 
     assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
     {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Action": "sts:AssumeRole",
-                "Principal": {
-                    "Service": "ec2.amazonaws.com"
-                },
-                "Effect": "Allow",
-                "Sid": ""
-            },
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "logs:CreateLogStream",
-                    "logs:PutLogEvents",
-                    "logs:DescribeLogGroups",
-                    "logs:DescribeLogStreams"
-                ],
-                "Resource": "*"
-            }
-        ]
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+       },
+       "Effect": "Allow",
+       "Sid": ""
     }
-    EOF
+  ]
+}
+EOF
 
+    inline_policy {
+        name = "ec2_policy"
+        
+        policy = jsonencode({
+            Version = "2012-10-17"
+            Statement = [
+                {
+                    Action = [
+                        "logs:CreateLogStream",
+                        "logs:PutLogEvents",
+                        "logs:DescribeLogGroups",
+                        "logs:DescribeLogStreams"
+                    ]
+                    Effect   = "Allow"
+                    Resource = "*"
+                },
+            ]
+        })
+    }
+    
     tags = {
         tag-key = "tag-value"
     }
 }
+
 
 resource "aws_iam_role_policy_attachment" "ssm-role-policy-attach" {
     role       = "${aws_iam_role.ansible_nodes_role.name}"

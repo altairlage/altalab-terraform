@@ -16,7 +16,7 @@ resource "aws_lb" "semaphore_control_lb" {
     internal           = false
     load_balancer_type = "application"
     security_groups    = [aws_security_group.control_node_sg.id]
-    subnets            = [aws_subnet.cicd_subnet_az1.id]
+    subnets            = [aws_subnet.public_subnet_az1.id, aws_subnet.public_subnet_az2.id]
 }
 
 resource "aws_lb_listener" "semaphore_control_lb_listener" {
