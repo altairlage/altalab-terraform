@@ -45,3 +45,15 @@ terraform destroy -var-file=./env/us-west-2.tfvars
     1. Create the A record for each service
     1. Maybe CNAME records too?
 1. Create SSM role to allow ssh connection in all the servers - done
+
+# Lab ideas
+
+1. Create a ASG lab.
+  1. Create an ec2 with a web server for instance.
+  1. Create an AMI from the instance.
+  1. Create the Lauch template.
+  1. Create the ASG.
+    1. Create ASG Dynamic scaling policies.
+    1. Create scheduled scaling actions.
+1. Create a Terraform deployment for the wordpress challenge.
+
