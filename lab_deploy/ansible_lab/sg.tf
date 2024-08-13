@@ -1,5 +1,5 @@
 resource "aws_security_group" "control_node_sg" {
-    name        = "control-node-sg"
+    name        = "${var.resource_keyword}-control-node-sg"
     description = "Allows SSH and HTTP"
     vpc_id      = aws_vpc.vpc.id
 
@@ -35,12 +35,12 @@ resource "aws_security_group" "control_node_sg" {
     }
 
     tags = {
-        Name = "control-node-sg"
+        Name = "${var.resource_keyword}-control-node-sg"
     }
 }
 
 resource "aws_security_group" "managed_nodes_sg" {
-    name        = "managed-nodes-sg"
+    name        = "${var.resource_keyword}-managed-nodes-sg"
     description = "Allows SSH and HTTP"
     vpc_id      = aws_vpc.vpc.id
 
@@ -76,6 +76,6 @@ resource "aws_security_group" "managed_nodes_sg" {
     }
 
     tags = {
-        Name = "managed-nodes-sg"
+        Name = "${var.resource_keyword}-managed-nodes-sg"
     }
 }

@@ -1,4 +1,10 @@
 variable "region" {
+    description = "Define the main deployment naming"
+    type        = string
+    default     = "altalab"
+}
+
+variable "region" {
     description = "define the AWS region to be used"
     type        = string
     validation {
@@ -59,5 +65,5 @@ variable "internet_gateway_cidr_block" {
 }
 
 locals {
-    product_keyword = "ansible-lab"
+    product_keyword = "altalab"
 }
