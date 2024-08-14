@@ -1,7 +1,7 @@
 resource "aws_security_group" "control_node_sg" {
-    name        = "control-node-sg"
+    name        = "${var.name_keyword}-control-node-sg"
     description = "Allows SSH and HTTP"
-    vpc_id      = aws_vpc.vpc.id
+    vpc_id      = var.vpc_id
 
     ingress {
         description = "HTTP to EC2"
@@ -35,14 +35,14 @@ resource "aws_security_group" "control_node_sg" {
     }
 
     tags = {
-        Name = "control-node-sg"
+        Name = "${var.name_keyword}-control-node-sg"
     }
 }
 
 resource "aws_security_group" "managed_nodes_sg" {
-    name        = "managed-nodes-sg"
+    name        = "${var.name_keyword}-managed-nodes-sg"
     description = "Allows SSH and HTTP"
-    vpc_id      = aws_vpc.vpc.id
+    vpc_id      = var.vpc_id
 
     ingress {
         description = "SSH to EC2"
@@ -76,6 +76,6 @@ resource "aws_security_group" "managed_nodes_sg" {
     }
 
     tags = {
-        Name = "managed-nodes-sg"
+        Name = "${var.name_keyword}-managed-nodes-sg"
     }
 }

@@ -1,18 +1,15 @@
+variable "name_keyword" {
+    description = "defines the identifier/name keyword for resource naming"
+    type        = string
+
+}
+
 variable "region" {
     description = "define the AWS region to be used"
     type        = string
     validation {
         condition     = can(regex("^([a-z0-9-'])+$", var.region))
         error_message = "Please use a valid AWS region (eg. us-west-1)."
-    }
-}
-
-variable "environment" {
-    description = "define the AWS environment to be used"
-    type        = string
-    validation {
-        condition     = can(regex("^([a-z0-9-'])+$", var.environment))
-        error_message = "Please use a valid environment name (eg. dev, qa, staging, or prod)."
     }
 }
 
@@ -52,8 +49,4 @@ variable "db_subnet_az2_cidr_block" {
 
 variable "cicd_subnet_az1_cidr_block" {
     type    = string
-}
-
-locals {
-    lab_keyword = "altalab"
 }

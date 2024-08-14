@@ -8,20 +8,20 @@ resource "aws_vpc" "vpc" {
     enable_dns_support   = true
     enable_dns_hostnames = true
     tags = {
-        Name = "${local.product_keyword}-vpc"
+        Name = "${var.name_keyword}-vpc"
     }
 }
 
 resource "aws_internet_gateway" "igw" {
     vpc_id = aws_vpc.vpc.id
     tags = {
-        Name = "${local.product_keyword}-igw"
+        Name = "${var.name_keyword}-igw"
     }
 }
 
 resource "aws_eip" "nat_eip_az1" {
     tags = {
-        Name = "${local.product_keyword}-natgateway-az1-eip"
+        Name = "${var.name_keyword}-natgateway-az1-eip"
     }
 }
 
@@ -30,7 +30,7 @@ resource "aws_nat_gateway" "nat_az1" {
     subnet_id = aws_subnet.public_subnet_az1.id
     connectivity_type = "public"
     tags = {
-        Name = "${local.product_keyword}-natgateway-az1"
+        Name = "${var.name_keyword}-natgateway-az1"
     }
 
     depends_on = [aws_internet_gateway.igw]
@@ -38,7 +38,7 @@ resource "aws_nat_gateway" "nat_az1" {
 
 resource "aws_eip" "nat_eip_az2" {
     tags = {
-        Name = "${local.product_keyword}-natgateway-az2-eip"
+        Name = "${var.name_keyword}-natgateway-az2-eip"
     }
 }
 
@@ -47,7 +47,7 @@ resource "aws_nat_gateway" "nat_az2" {
     subnet_id = aws_subnet.public_subnet_az2.id
     connectivity_type = "public"
     tags = {
-        Name = "${local.product_keyword}-natgateway-az2"
+        Name = "${var.name_keyword}-natgateway-az2"
     }
 
     depends_on = [aws_internet_gateway.igw]
@@ -63,7 +63,7 @@ resource "aws_route_table" "vpc_rt" {
         gateway_id = aws_internet_gateway.igw.id
     }
     tags = {
-        Name = "${local.product_keyword}-rt"
+        Name = "${var.name_keyword}-rt"
     }
 }
 
@@ -74,7 +74,7 @@ resource "aws_route_table" "public_az1_rt" {
         gateway_id = aws_internet_gateway.igw.id
     }
     tags = {
-        Name = "${local.product_keyword}-public-az1-rt"
+        Name = "${var.name_keyword}-public-az1-rt"
     }
 }
 
@@ -85,7 +85,7 @@ resource "aws_route_table" "public_az2_rt" {
         gateway_id = aws_internet_gateway.igw.id
     }
     tags = {
-        Name = "${local.product_keyword}-public-az2-rt"
+        Name = "${var.name_keyword}-public-az2-rt"
     }
 }
 
@@ -97,7 +97,7 @@ resource "aws_route_table" "middleware_subnet_az1_rt" {
         gateway_id = aws_nat_gateway.nat_az1.id
     }
     tags = {
-        Name = "${local.product_keyword}-middleware-az1-rt"
+        Name = "${var.name_keyword}-middleware-az1-rt"
     }
 }
 
@@ -110,7 +110,7 @@ resource "aws_route_table" "middleware_subnet_az2_rt" {
     }
     
     tags = {
-        Name = "${local.product_keyword}-middleware-az2-rt"
+        Name = "${var.name_keyword}-middleware-az2-rt"
     }
 }
 
@@ -118,7 +118,7 @@ resource "aws_route_table" "db_subnet_az1_rt" {
     vpc_id           = aws_vpc.vpc.id
     
     tags = {
-        Name = "${local.product_keyword}-db-az1-rt"
+        Name = "${var.name_keyword}-db-az1-rt"
     }
 }
 
@@ -126,7 +126,7 @@ resource "aws_route_table" "db_subnet_az2_rt" {
     vpc_id           = aws_vpc.vpc.id
     
     tags = {
-        Name = "${local.product_keyword}-db-az2-rt"
+        Name = "${var.name_keyword}-db-az2-rt"
     }
 }
 
@@ -139,7 +139,7 @@ resource "aws_route_table" "cicd_subnet_rt" {
     }
     
     tags = {
-        Name = "${local.product_keyword}-cicd-rt"
+        Name = "${var.name_keyword}-cicd-rt"
     }
 }
 
@@ -186,17 +186,18 @@ resource "aws_route_table_association" "cicd_az1_rt_assoc" {
     subnet_id      = aws_subnet.cicd_subnet_az1.id
 }
 
+
 #
 # Other resources
 #
 
 resource "aws_cloudwatch_log_group" "vpc_flow_logs" {
-    name              = "${local.product_keyword}-vpc-flow-logs"
+    name              = "${var.name_keyword}-vpc-flow-logs"
     retention_in_days = 30 # Default value for other accounts = 180
 }
 
 resource "aws_iam_role" "vpc_flow_logs" {
-    name = "${local.product_keyword}-${var.region}-vpc-flow-logs"
+    name = "${var.name_keyword}-${var.region}-vpc-flow-logs"
     assume_role_policy = jsonencode({
         Version   = "2012-10-17"
         Statement = [
@@ -213,7 +214,7 @@ resource "aws_iam_role" "vpc_flow_logs" {
 }
 
 resource "aws_iam_role_policy" "vpc_flow_logs_policy" {
-    name = "${local.product_keyword}-${var.region}-vpc-flow-logs"
+    name = "${var.name_keyword}-${var.region}-vpc-flow-logs"
     role = aws_iam_role.vpc_flow_logs.id
     policy = jsonencode({
         Version = "2012-10-17"
@@ -244,7 +245,7 @@ resource "aws_flow_log" "vpc_flow_logs" {
 #     domain_name_servers = ["AmazonProvidedDNS"]
 #     netbios_node_type   = 2
 #     tags = {
-#         Name = "${local.product_keyword}-core"
+#         Name = "${var.name_keyword}-core"
 #     }
 # }
 
