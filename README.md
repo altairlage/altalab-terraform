@@ -29,10 +29,10 @@ terraform init -backend-config=./env/us-west-2.tfbackend
 terraform plan -var-file=./env/us-west-2.tfvars
 
 ## Apply
-terraform apply -var-file=./env/us-west-2.tfvars
+terraform apply -var-file=./env/us-west-2.tfvars --auto-approve
 
 ## Destroy
-terraform destroy -var-file=./env/us-west-2.tfvars
+terraform destroy -var-file=./env/us-west-2.tfvars --auto-approve
 
 
 # TO-DO

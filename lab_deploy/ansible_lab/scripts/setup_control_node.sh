@@ -27,8 +27,9 @@ sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt-get install -y ansible
 
 echo "*** Setup semaphore"
-mkdir /home/ubuntu/semaphore /home/ubuntu/semaphore-mysql /home/ubuntu/semaphore-playbook
+mkdir /home/ubuntu/semaphore /home/ubuntu/semaphore/semaphore-mysql /home/ubuntu/semaphore/semaphore-playbook
 
 git clone https://github.com/altairlage/ansible-semaphore-lab.git /home/ubuntu/ansible-semaphore-lab
-mv /home/ubuntu/ansible-semaphore-lab/ansible_lab/semaphore_install/docker-compose.yml /home/ubuntu/semaphore
+cp /home/ubuntu/ansible-semaphore-lab/lab_deploy/ansible_lab/semaphore_install/docker-compose.yml /home/ubuntu/semaphore
+cp /home/ubuntu/ansible-semaphore-lab/lab_deploy/ansible_lab/playbooks/* /home/ubuntu/semaphore/semaphore-playbook
 docker-compose -f /home/ubuntu/semaphore/docker-compose.yml up --detach
