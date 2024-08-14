@@ -1,5 +1,5 @@
 resource "aws_iam_role" "ansible_nodes_role" {
-    name = "${var.resource_keyword}-nodes-role"
+    name = "${var.name_keyword}-nodes-role"
 
     assume_role_policy = <<EOF
 {

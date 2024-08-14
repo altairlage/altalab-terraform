@@ -1,6 +1,5 @@
 environment = "dev"
 region = "us-west-2"
-internet_gateway_cidr_block         = "0.0.0.0/0"
 vpc_cidr_block                      = "10.100.0.0/20"
 
 public_subnet_az1_cidr_block        = "10.100.0.0/24"

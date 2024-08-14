@@ -1,16 +1,29 @@
-variable "cicd_subnet_az1_name" {
+variable "vpc_id" {
     type    = string
 }
 
-variable "middleware_subnet_az1_name" {
+variable "cicd_subnet_az1_id" {
     type    = string
 }
 
-variable "middleware_subnet_az2_name" {
+variable "middleware_subnet_az1_id" {
     type    = string
 }
 
-variable "resource_keyword" {
+variable "middleware_subnet_az2_id" {
     type    = string
-    default = "altalab-ansible"
+}
+
+variable "public_subnet_az1_id" {
+    type    = string
+}
+
+variable "public_subnet_az2_id" {
+    type    = string
+}
+
+variable "name_keyword" {
+    description = "defines the identifier/name keyword for resource naming"
+    type        = string
+    default     = "altalab-ansible"
 }

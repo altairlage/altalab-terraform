@@ -5,13 +5,13 @@ resource "aws_instance" "control_node_instance" {
     associate_public_ip_address = true
     
     vpc_security_group_ids  = [aws_security_group.control_node_sg.id]
-    subnet_id               = data.aws_subnet.cicd_subnet_az1.id
+    subnet_id               = var.cicd_subnet_az1_id
 
     iam_instance_profile = "${aws_iam_instance_profile.ansible_nodes_instance_profile.name}"
     
     tags = {
-        Name = "${var.resource_keyword}-control-node"
+        Name = "${var.name_keyword}-control-node"
     }
 
-    user_data = file("./scripts/setup_control_node.sh")
+    user_data = file("${path.module}/scripts/setup_control_node.sh")
 }
