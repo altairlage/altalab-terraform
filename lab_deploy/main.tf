@@ -20,6 +20,10 @@ provider "aws" {
     }
 }
 
+# 
+# Comment/Uncomment the modules you want to deploy
+# 
+
 module "basic_networking" {
     source                          = "./basic_networking"
     
@@ -39,12 +43,23 @@ module "basic_networking" {
     cicd_subnet_az1_cidr_block       = var.cicd_subnet_az1_cidr_block
 }
 
-module "ansible_lab" {
-    source                      = "./ansible_lab"
-    name_keyword                = "${local.lab_keyword}-ansible"
+# module "ansible_lab" {
+#     source                      = "./ansible_lab"
+#     name_keyword                = "${local.lab_keyword}-ansible"
 
+#     vpc_id                      = module.basic_networking.vpc_id
+#     cicd_subnet_az1_id          = module.basic_networking.cicd_subnet_az1_id
+#     middleware_subnet_az1_id    = module.basic_networking.middleware_subnet_az1_id
+#     middleware_subnet_az2_id    = module.basic_networking.middleware_subnet_az2_id
+#     public_subnet_az1_id        = module.basic_networking.public_subnet_az1_id
+#     public_subnet_az2_id        = module.basic_networking.public_subnet_az2_id
+# }
+
+module "autoscaling_lab" {
+    source                      = "./autoscaling_lab"
+    name_keyword                = "${local.lab_keyword}-asg"
+    
     vpc_id                      = module.basic_networking.vpc_id
-    cicd_subnet_az1_id          = module.basic_networking.cicd_subnet_az1_id
     middleware_subnet_az1_id    = module.basic_networking.middleware_subnet_az1_id
     middleware_subnet_az2_id    = module.basic_networking.middleware_subnet_az2_id
     public_subnet_az1_id        = module.basic_networking.public_subnet_az1_id
