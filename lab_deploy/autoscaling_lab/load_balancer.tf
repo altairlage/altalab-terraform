@@ -2,7 +2,7 @@ resource "aws_lb" "asg_lb" {
     name               = "${var.name_keyword}-lb"
     internal           = false
     load_balancer_type = "application"
-    security_groups    = [aws_security_group.control_node_sg.id]
+    security_groups    = [aws_security_group.asg_sg.id]
     subnets            = [var.public_subnet_az1_id, var.public_subnet_az2_id]
 }
 

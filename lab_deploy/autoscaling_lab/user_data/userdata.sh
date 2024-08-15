@@ -18,9 +18,9 @@ mkdir /home/ec2-user/$APP_NAME
 
 # Checkout repo and copy files to final destination
 git clone https://github.com/altairlage/ansible-semaphore-lab.git /home/ec2-user/lab
-cp -rf /home/ec2-user/lab/autoscaling_lab/app/* /home/ec2-user/site
-cp -rf /home/ec2-user/lab/autoscaling_lab/app/templates/index.html /home/ec2-user/site
-mv /home/ec2-user/lab/app/site /etc/rc.d/init.d/
+cp -rf /home/ec2-user/lab/lab_deploy/autoscaling_lab/app/* /home/ec2-user/$APP_NAME
+cp -rf /home/ec2-user/lab/lab_deploy/autoscaling_lab/app/templates/index.html /home/ec2-user/$APP_NAME
+mv /home/ec2-user/lab/lab_deploy/autoscaling_lab/app/site /etc/rc.d/init.d/
 chmod +x /etc/rc.d/init.d/site
 sudo chown -R ec2-user:ec2-user /home/ec2-user/$APP_NAME
 
