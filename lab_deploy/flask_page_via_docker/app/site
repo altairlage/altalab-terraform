@@ -1,0 +1,38 @@
+#!/bin/bash
+# chkconfig: 3 50 50
+# description: Lab service
+
+# locale /etc/init.d/lab
+
+# Source function library.
+. /etc/init.d/functions
+
+start() {
+    export FLASK_APP=/home/ec2-user/site/app.py
+    /usr/local/bin/flask run --port=80 --host='0.0.0.0' &
+}
+
+stop() {
+    killall flask
+}
+
+case "$1" in
+    start)
+       start
+       ;;
+    stop)
+       stop
+       ;;
+    restart)
+       stop
+       start
+       ;;
+    status)
+       # code to check status of app comes here
+       # example: status program_name
+       ;;
+    *)
+       echo "Usage: $0 {start|stop|status|restart}"
+esac
+
+exit 0
