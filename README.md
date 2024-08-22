@@ -2,12 +2,19 @@
 
 Lab developed to test and perform knowledge share for my team. It shows several Terraform deployments in AWS. The intent is to exercise the most common deployments using Terraform.
 
-This project contains several modules. Each module represents a lab, which deploys resources specific infrastructure or services setup.
+This project contains several modules. Each module represents a lab, which deploys resources specific infrastructure or services setup. 
+\
+&nbsp;
+\
+&nbsp;
 
 ## basic_networking
 
 This module deploys a basic AWS infrastructure, a VPC with some subnets, the CICD subnet to run some CICD services, a 3 tier subnet schema (public, middleware, and DB subnets), and the basic requirements to allow connectivity. 
-
+\
+&nbsp;
+\
+&nbsp;
 
 ## ansible_lab
 
@@ -18,7 +25,10 @@ Deploys a complete Ansible lab, including:
     - 4 managed nodes in middleware subnet.
         - 2 in each AZ.
 - A load balancer to expose the Semaphore service for remote configuration;
-
+\
+&nbsp;
+\
+&nbsp;
 
 ## autoscaling_lab
 
@@ -27,17 +37,26 @@ This module is a lab to test an autoscaling group with load balancing. It deploy
 - The launch template with full configuration of the EC2 servers.
     - Contains also the automatic setup of a Flask (Python) application that presents the EC2 instance info.
 - The load balancer attached to the ASG to register the EC2 instances in the Target Group.
-
+\
+&nbsp;
+\
+&nbsp;
 
 ## flask_page_via_docker
 
 This module deploys the same setup as the autoscaling_lab, but runs the Flask app via Docker.
-
+\
+&nbsp;
+\
+&nbsp;
 
 # Enable and disable modules
 
 Comment/Uncomment the modules invocation in the main.tf file to enable or disable the desired modules.
-
+\
+&nbsp;
+\
+&nbsp;
 
 # Deploy commands
 
@@ -59,7 +78,10 @@ terraform apply -var-file=./env/us-west-2.tfvars --auto-approve
 
 ## Destroy
 terraform destroy -var-file=./env/us-west-2.tfvars --auto-approve
-
+\
+&nbsp;
+\
+&nbsp;
 
 # TO-DO
 
@@ -71,6 +93,10 @@ terraform destroy -var-file=./env/us-west-2.tfvars --auto-approve
     1. Create the A record for each service
     1. Maybe CNAME records too?
 1. Create SSM role to allow ssh connection in all the servers - done
+\
+&nbsp;
+\
+&nbsp;
 
 # Lab ideas
 
