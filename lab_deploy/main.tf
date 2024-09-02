@@ -55,13 +55,25 @@ module "basic_networking" {
 #     public_subnet_az2_id        = module.basic_networking.public_subnet_az2_id
 # }
 
-module "autoscaling_lab" {
-    source                      = "./autoscaling_lab"
-    name_keyword                = "${local.lab_keyword}-asg"
+# module "autoscaling_lab" {
+#     source                      = "./autoscaling_lab"
+#     name_keyword                = "${local.lab_keyword}-asg"
     
-    vpc_id                      = module.basic_networking.vpc_id
-    middleware_subnet_az1_id    = module.basic_networking.middleware_subnet_az1_id
-    middleware_subnet_az2_id    = module.basic_networking.middleware_subnet_az2_id
-    public_subnet_az1_id        = module.basic_networking.public_subnet_az1_id
-    public_subnet_az2_id        = module.basic_networking.public_subnet_az2_id
+#     vpc_id                      = module.basic_networking.vpc_id
+#     middleware_subnet_az1_id    = module.basic_networking.middleware_subnet_az1_id
+#     middleware_subnet_az2_id    = module.basic_networking.middleware_subnet_az2_id
+#     public_subnet_az1_id        = module.basic_networking.public_subnet_az1_id
+#     public_subnet_az2_id        = module.basic_networking.public_subnet_az2_id
+# }
+
+module "ecs_alb_lab" {
+    source                   = "./ecs_alb_lab"
+    name_keyword             = "${local.lab_keyword}-ecs"
+    vpc_id                   = module.basic_networking.vpc_id
+
+    public_subnet_az1_id     = module.basic_networking.public_subnet_az1_id
+    public_subnet_az2_id     = module.basic_networking.public_subnet_az2_id
+
+    middleware_subnet_az1_id = module.basic_networking.middleware_subnet_az1_id
+    middleware_subnet_az2_id = module.basic_networking.middleware_subnet_az2_id
 }

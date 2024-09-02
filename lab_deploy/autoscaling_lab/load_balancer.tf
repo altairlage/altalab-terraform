@@ -29,6 +29,10 @@ resource "aws_autoscaling_attachment" "asg_lab_asg_attach" {
     lb_target_group_arn     = aws_lb_target_group.asg_tg.arn
 }
 
+output "alb_url" {
+  value = aws_lb.asg_lb.dns_name
+}
+
 # resource "aws_lb_target_group_attachment" "asg_tg_attach" {
 #     target_group_arn = aws_lb_target_group.asg_tg.arn
 #     target_id        = aws_instance.control_node_instance.id
