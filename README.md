@@ -68,6 +68,26 @@ References:
 The architecture of this lab is:
 ![ECS VPC1](/doc_resources/ecs_vpc1.png "ECS VPC1")
 
+ECS Service configuration:
+![ECS Sevice](/doc_resources/ecs1.webp "ECS Service")
+
+Some resulting resources:
+![ECS Load balancer](/doc_resources/ecs_lb_alb.png "ECS Load balancer")
+
+![ECS Cluster infra](/doc_resources/ecs_lb_infra.png "ECS Cluster infra")
+
+![ECS Cluster service](/doc_resources/ecs_lb_servie.png "ECS Cluster service")
+
+![ECS tasks](/doc_resources/ecs_lb_tasks.png "ECS tasks")
+
+![ECS Load balancer target group](/doc_resources/ecs_lb_tg.png "ECS Load balancer target group")
+
+### Tests
+
+To test this lab, deploy it with multiple EC2 instances and ECS tasks. To make sure the tasks are responding, make a HTTP request to the load balancer URL. Each request should return a different IP.
+![Test tasks](/doc_resources/ecs_lb_request1.png "Test tasks")
+![Test tasks](/doc_resources/ecs_lb_request2.png "Test tasks")
+
 \
 &nbsp;
 \
