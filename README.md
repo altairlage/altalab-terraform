@@ -12,6 +12,8 @@ This project contains several modules. Each module represents a lab, which deplo
 This module deploys a basic AWS infrastructure, a VPC with some subnets, the CICD subnet to run some CICD services, a 3 tier subnet schema (public, middleware, and DB subnets), and the basic requirements to allow connectivity. 
 
 ### Architecture
+Basic networking deployment architecture:
+![Basic networking deployment architecture](/doc_resources/basic_networking_arch.png "Basic networking deployment architecture")
 https://lucid.app/lucidchart/740b7a07-ecc3-4aa5-9e78-50ac4efa7627/view
 
 
