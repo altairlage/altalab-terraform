@@ -10,6 +10,11 @@ This project contains several modules. Each module represents a lab, which deplo
 
 ## basic_networking
 This module deploys a basic AWS infrastructure, a VPC with some subnets, the CICD subnet to run some CICD services, a 3 tier subnet schema (public, middleware, and DB subnets), and the basic requirements to allow connectivity. 
+
+### Architecture
+https://lucid.app/lucidchart/740b7a07-ecc3-4aa5-9e78-50ac4efa7627/view
+
+
 \
 &nbsp;
 \
@@ -71,6 +76,8 @@ The architecture of this lab is:
 ECS Service configuration:
 ![ECS Sevice](/doc_resources/ecs1.webp "ECS Service")
 
+\
+&nbsp;
 Some resulting resources:
 ![ECS Load balancer](/doc_resources/ecs_lb_alb.png "ECS Load balancer")
 
@@ -82,6 +89,8 @@ Some resulting resources:
 
 ![ECS Load balancer target group](/doc_resources/ecs_lb_tg.png "ECS Load balancer target group")
 
+\
+&nbsp;
 ### Tests
 
 To test this lab, deploy it with multiple EC2 instances and ECS tasks. To make sure the tasks are responding, make a HTTP request to the load balancer URL. Each request should return a different IP.
