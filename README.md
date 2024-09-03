@@ -65,6 +65,9 @@ References:
 - https://medium.com/@ramonriserio/como-implantar-uma-aplica%C3%A7%C3%A3o-usando-aws-ecs-e-terraform-tutorial-b40417fb106a
 - https://github.com/ramonriserio/Amazon-ECS/blob/version-3/task-definition.tf
 
+The architecture of this lab is:
+![ECS VPC1](/doc_resources/ecs_vpc1.png "ECS VPC1")
+
 \
 &nbsp;
 \
@@ -115,6 +118,7 @@ terraform destroy -var-file=./env/us-west-2.tfvars --auto-approve
 1. Deploy ECS cluster backed by Fargate with sample applicaiton.
     1. https://www.chakray.com/creating-fargate-ecs-task-aws-using-terraform/
     1. https://www.architect.io/blog/2021-03-30/create-and-manage-an-aws-ecs-cluster-with-terraform/
+    1. https://nexgeneerz.io/how-to-setup-amazon-ecs-fargate-terraform/
 1. Create an API Gateway -> Lambda -> DDB deployment.
     1. https://developer.hashicorp.com/terraform/tutorials/aws/lambda-api-gateway
 1. Create an host a Flask app
