@@ -1,4 +1,18 @@
 # altalab
+
+[![Ansible Badge](https://img.shields.io/badge/Ansible-E00?logo=ansible&logoColor=fff&style=for-the-badge "Ansible")](https://www.ansible.com/)
+[![Semaphore Badge](https://img.shields.io/badge/Semaphore-19A974?logo=ansible&logoColor=fff&style=for-the-badge)](https://semaphoreui.com/)
+[![Terraform Badge](https://img.shields.io/badge/Terraform-844FBA?logo=terraform&logoColor=fff&style=for-the-badge)](https://www.terraform.io/)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Amazon Web Services Badge](https://img.shields.io/badge/Amazon%20Web%20Services-232F3E?logo=amazonwebservices&logoColor=fff&style=for-the-badge)
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Amazon EC2 Badge](https://img.shields.io/badge/Amazon%20EC2-F90?logo=amazonec2&logoColor=fff&style=for-the-badge)
+![AWS Elastic Load Balancing Badge](https://img.shields.io/badge/AWS%20Elastic%20Load%20Balancing-8C4FFF?logo=awselasticloadbalancing&logoColor=fff&style=for-the-badge)
+![Amazon EKS Badge](https://img.shields.io/badge/Amazon%20EKS-F90?logo=amazoneks&logoColor=fff&style=for-the-badge)
+![Amazon Identity Access Management Badge](https://img.shields.io/badge/Amazon%20Identity%20Access%20Management-DD344C?logo=amazoniam&logoColor=fff&style=for-the-badge)
+![Ubuntu Badge](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=fff&style=for-the-badge)
+![Lucid Badge](https://img.shields.io/badge/Lucid-282C33?logo=lucid&logoColor=fff&style=for-the-badge)
+
 Lab developed to test and perform knowledge share for my team. It shows several Terraform deployments in AWS. The intent is to exercise the most common deployments using Terraform.
 
 This project contains several modules. Each module represents a lab, which deploys resources specific infrastructure or services setup. 
